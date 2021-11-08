@@ -17,5 +17,10 @@ class Maybe
 	@None: -> Maybe nil, false
 	@Exists: (Value) -> Maybe Value, Value != nil
 	@Truthy: (Value) -> Maybe Value, Value and true
-	@Array: (Array) -> Maybe Value, #Array > 0
+	@Array: (Array = {}) ->
+		assert (type Array) == 'table',
+			'Maybe<Array> expects a table'
+		
+		Maybe Array, #Array > 0
+
 	@Call: (Fn, ...) -> Maybe.Exists Fn ...
