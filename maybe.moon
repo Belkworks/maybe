@@ -24,3 +24,8 @@ class Maybe
 		Maybe Array, #Array > 0
 
 	@Call: (Fn, ...) -> Maybe.Exists Fn ...
+	@Object: (Value = {}) ->
+		assert (type Value) == 'table',
+			'Maybe<Object> expects a table'
+
+		Maybe Value, nil != pairs(Value) Value
